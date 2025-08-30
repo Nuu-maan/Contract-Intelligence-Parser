@@ -110,6 +110,7 @@ class PaymentStructure(BaseModel):
     payment_due_date: Optional[str] = None
     payment_method: Optional[str] = None
     late_payment_terms: Optional[str] = None
+    late_payment_fee: Optional[float] = None
     banking_info: Optional[BankingInfo] = None
 
 
