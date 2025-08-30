@@ -1,12 +1,20 @@
 /** @type {import('next').NextConfig} */
+const path = require('path');
+
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
-  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
   images: {
     domains: ['localhost'],
   },
-  // Add any other Next.js config options here
+  webpack: (config) => {
+    // Add path aliases
+    config.resolve.alias['@'] = path.resolve(__dirname);
+    return config;
+  },
 };
 
 module.exports = nextConfig;

@@ -2,7 +2,16 @@
 
 import { useEffect, useState } from "react"
 import { FileText } from "lucide-react"
-import { getContracts, Contract } from '../src/lib/api'
+import { getContracts } from '../src/lib/api'
+
+interface Contract {
+  contract_id: string;
+  filename: string;
+  upload_date: string;
+  status: 'processing' | 'completed' | 'failed' | 'pending';
+  confidence_score?: number;
+  // Add other contract properties as needed
+}
 
 type Props = {
   onSelectContract?: (contractId: string) => void
